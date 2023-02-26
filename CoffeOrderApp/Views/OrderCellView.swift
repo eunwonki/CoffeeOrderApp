@@ -10,7 +10,7 @@ import SwiftUI
 
 struct OrderCellView: View {
     let order: Order
-    
+
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -25,13 +25,15 @@ struct OrderCellView: View {
             Text(order.total as NSNumber, formatter: NumberFormatter.currency)
                 .accessibilityIdentifier("coffeePriceText")
         }
-        Text(order.name)
-        
     }
 }
 
 struct OrderCellView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderCellView(order: Order(name: "1", coffeeName: "2", total: 1.0, size: .small))
+        OrderCellView(
+            order: Order(name: "Liam",
+                         coffeeName: "Latte",
+                         total: 1.0, size: .small)
+        )
     }
 }
