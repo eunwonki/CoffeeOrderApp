@@ -23,6 +23,7 @@
 		6689098029AA271700CBF354 /* AddCoffeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6689097F29AA271700CBF354 /* AddCoffeeView.swift */; };
 		6689098229AA28F900CBF354 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6689098129AA28F900CBF354 /* View+Extension.swift */; };
 		6689098429AA2C4A00CBF354 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6689098329AA2C4A00CBF354 /* String+Extension.swift */; };
+		6698C7F329AB453800EACE3A /* OrderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6698C7F229AB453800EACE3A /* OrderDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		6689097F29AA271700CBF354 /* AddCoffeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoffeeView.swift; sourceTree = "<group>"; };
 		6689098129AA28F900CBF354 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		6689098329AA2C4A00CBF354 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		6698C7F229AB453800EACE3A /* OrderDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				6664933229A7A1C30037C03F /* ContentView.swift */,
 				6689096729A7AB2500CBF354 /* OrderCellView.swift */,
 				6689097F29AA271700CBF354 /* AddCoffeeView.swift */,
+				6698C7F229AB453800EACE3A /* OrderDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				6664933129A7A1C30037C03F /* CoffeOrderApp.swift in Sources */,
 				6689098029AA271700CBF354 /* AddCoffeeView.swift in Sources */,
 				6689098229AA28F900CBF354 /* View+Extension.swift in Sources */,
+				6698C7F329AB453800EACE3A /* OrderDetailView.swift in Sources */,
 				6689096529A7AA9400CBF354 /* NumberFormatter+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

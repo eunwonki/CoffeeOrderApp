@@ -12,7 +12,14 @@ class MockingWebService: WebService {
         super.init(baseURL: URL(string: "https://www.naver.com")!)
     }
     
-    override func placeOrder(order: Order) async throws -> Order  {
+//    override func deleteOrder(orderId: Int) async throws -> Order {
+//    }
+    
+    override func updateOrder(_ order: Order) async throws -> Order {
+        return order
+    }
+    
+    override func placeOrder(order: Order) async throws -> Order {
         return order
     }
     

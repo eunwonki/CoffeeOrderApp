@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var isPresented: Bool = false
+
+    // Repository, Singleton 같은 느낌인듯...
     @EnvironmentObject private var model: CoffeeModel
 
     private func populateOrders() async {
@@ -18,14 +20,14 @@ struct ContentView: View {
             print(error)
         }
     }
-    
+
     private func deleteOrder(_ indexSet: IndexSet) {
         indexSet.forEach { index in
             let order = model.orders[index]
             guard let orderId = order.id else {
                 return
             }
-            
+
             Task {
                 do {
                     try await model.deleteOrder(orderId)
@@ -42,13 +44,19 @@ struct ContentView: View {
                 if model.orders.isEmpty {
                     Text("No orders available!").accessibilityIdentifier("noOrdersText")
                 } else {
-                    List() {
+                    List {
                         ForEach(model.orders) { order in
-                            OrderCellView(order: order)
+                            NavigationLink(value: order.id) {
+                                OrderCellView(order: order)
+                            }
                         }.onDelete(perform: deleteOrder)
-                    }
+                    }.accessibilityIdentifier("orderList")
                 }
             }
+            .navigationDestination(for: Int.self, destination: {
+                orderId in
+                OrderDetailView(orderId: orderId)
+            })
             .task {
                 await populateOrders()
             }

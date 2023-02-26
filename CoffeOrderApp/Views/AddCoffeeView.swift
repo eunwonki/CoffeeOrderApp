@@ -14,6 +14,8 @@ struct AddCoffeeErrors {
 }
 
 struct AddCoffeeView: View {
+    var original: Order?
+    
     @State private var name: String = ""
     @State private var coffeeName: String = ""
     @State private var price: String = ""
@@ -48,17 +50,44 @@ struct AddCoffeeView: View {
         return errors.name.isEmpty && errors.price.isEmpty && errors.coffeeName.isEmpty
     }
     
-    private func placeOrder() async {
-        let order = Order(
-            name: name, coffeeName: coffeeName,
-            total: Double(price) ?? 0, size: coffeeSize)
-        
+    private func place(order: Order) async {
         do {
             try await model.placeOrder(order)
-            dismiss()
         } catch {
             print(error)
         }
+    }
+    
+    private func update(order: Order) async {
+        do {
+            try await model.updateOrder(order)
+        } catch {
+            print(error)
+        }
+    }
+    
+    private func populateExistingOrder() {
+        if let original {
+            name = original.name
+            coffeeName = original.coffeeName
+            price = String(original.total)
+            coffeeSize = original.size
+        }
+    }
+    
+    private func saveOrUpdate() async {
+        let order = Order(
+            id: original?.id,
+            name: name, coffeeName: coffeeName,
+            total: Double(price) ?? 0, size: coffeeSize)
+        
+        if original != nil {
+            await update(order: order)
+        } else {
+            await place(order: order)
+        }
+        
+        dismiss()
     }
     
     var body: some View {
@@ -86,17 +115,19 @@ struct AddCoffeeView: View {
                     }
                 }.pickerStyle(.segmented)
                 
-                Button("Place Order") {
+                Button(original != nil ? "Update Order" : "Place Order") {
                     if isValid {
                         Task {
-                            await placeOrder()
+                            await saveOrUpdate()
                         }
                     }
                 }
                 .centerHorizontally()
                 .buttonStyle(.bordered)
                 .accessibilityIdentifier("placeOrderButton")
-            }.navigationTitle("Add Coffee")
+            }.navigationTitle(original == nil ? "Add Order" : "Update Order")
+        }.onAppear {
+            populateExistingOrder()
         }
     }
 }
