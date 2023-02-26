@@ -15,7 +15,7 @@ enum CoffeeSize: String, Codable, CaseIterable {
 
 struct Order: Codable, Identifiable, Hashable {
     // Codable에 의해 Json Parsign 실패하지 않도록 항상 주의하여 구현.
-    var id: Int? { return hashValue }
+    var id: Int? // { return hashValue }
 
     var name: String
     var coffeeName: String

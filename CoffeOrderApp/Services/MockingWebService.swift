@@ -18,11 +18,11 @@ class MockingWebService: WebService {
     
     override func getOrders() async throws -> [Order] {
         return [
-            Order(name: "liam", coffeeName: "Americano",
+            Order(id: 0, name: "liam", coffeeName: "Americano",
                   total: 3.0, size: .small),
-            Order(name: "robert", coffeeName: "Latte",
+            Order(id: 1, name: "robert", coffeeName: "Latte",
                   total: 5.0, size: .medium),
-            Order(name: "pawn", coffeeName: "Vanila Latte",
+            Order(id: 2, name: "pawn", coffeeName: "Vanila Latte",
                   total: 7.0, size: .large)
         ]
     }

@@ -14,7 +14,7 @@ struct OrderCellView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(order.name)
+                Text("\(order.name) (\(order.id ?? 0))")
                     .accessibilityIdentifier("orderNameText")
                     .bold()
                 Text("\(order.coffeeName) (\(order.size.rawValue))")
