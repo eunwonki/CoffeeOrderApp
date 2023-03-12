@@ -1,0 +1,23 @@
+[
+   {
+      "id":1,
+      "name":"Liam",
+      "coffeeName":"Hot Coffee",
+      "total":3.0,
+      "size":"Small"
+   },
+   {
+      "id": 2,
+      "name":"Robert",
+      "coffeeName":"Latte",
+      "total":4.0,
+      "size":"Medium"
+   },
+   {
+      "id": 3,
+      "name":"Paw",
+      "coffeeName":"Caffuccino",
+      "total":5.0,
+      "size":"Large"
+   }
+]

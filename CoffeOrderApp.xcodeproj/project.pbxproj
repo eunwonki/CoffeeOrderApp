@@ -15,7 +15,6 @@
 		6689096229A7A63400CBF354 /* CoffeeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6689096129A7A63400CBF354 /* CoffeeModel.swift */; };
 		6689096529A7AA9400CBF354 /* NumberFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6689096429A7AA9400CBF354 /* NumberFormatter+Extension.swift */; };
 		6689096829A7AB2500CBF354 /* OrderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6689096729A7AB2500CBF354 /* OrderCellView.swift */; };
-		6689096A29AA15A100CBF354 /* MockingWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6689096929AA15A100CBF354 /* MockingWebService.swift */; };
 		6689096F29AA1D8200CBF354 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6689096E29AA1D8200CBF354 /* AppEnvironment.swift */; };
 		6689097729AA228B00CBF354 /* CoffeOrderAppE2ETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6689097629AA228B00CBF354 /* CoffeOrderAppE2ETests.swift */; };
 		6689098029AA271700CBF354 /* AddCoffeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6689097F29AA271700CBF354 /* AddCoffeeView.swift */; };
@@ -26,6 +25,8 @@
 		66A6847C29BD933100F2BE93 /* CoffeeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A6847B29BD933100F2BE93 /* CoffeeAPI.swift */; };
 		66A6847E29BDC38E00F2BE93 /* MoyaProvider+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A6847D29BDC38E00F2BE93 /* MoyaProvider+Extension.swift */; };
 		66A6848129BDC56E00F2BE93 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 66A6848029BDC56E00F2BE93 /* OHHTTPStubsSwift */; };
+		66A6848429BE07A200F2BE93 /* CoffeeAPI+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A6848329BE07A200F2BE93 /* CoffeeAPI+Extension.swift */; };
+		66A6848629BE1BC100F2BE93 /* all_orders.json in Resources */ = {isa = PBXBuildFile; fileRef = 66A6848229BDD26B00F2BE93 /* all_orders.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +49,6 @@
 		6689096129A7A63400CBF354 /* CoffeeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeModel.swift; sourceTree = "<group>"; };
 		6689096429A7AA9400CBF354 /* NumberFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Extension.swift"; sourceTree = "<group>"; };
 		6689096729A7AB2500CBF354 /* OrderCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCellView.swift; sourceTree = "<group>"; };
-		6689096929AA15A100CBF354 /* MockingWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockingWebService.swift; sourceTree = "<group>"; };
 		6689096E29AA1D8200CBF354 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		6689097429AA228B00CBF354 /* CoffeOrderAppE2ETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoffeOrderAppE2ETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6689097629AA228B00CBF354 /* CoffeOrderAppE2ETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeOrderAppE2ETests.swift; sourceTree = "<group>"; };
@@ -58,6 +58,8 @@
 		6698C7F229AB453800EACE3A /* OrderDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailView.swift; sourceTree = "<group>"; };
 		66A6847B29BD933100F2BE93 /* CoffeeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeAPI.swift; sourceTree = "<group>"; };
 		66A6847D29BDC38E00F2BE93 /* MoyaProvider+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoyaProvider+Extension.swift"; sourceTree = "<group>"; };
+		66A6848229BDD26B00F2BE93 /* all_orders.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = all_orders.json; sourceTree = "<group>"; };
+		66A6848329BE07A200F2BE93 /* CoffeeAPI+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoffeeAPI+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		6664932F29A7A1C30037C03F /* CoffeOrderApp */ = {
 			isa = PBXGroup;
 			children = (
+				66A6848529BE1B9000F2BE93 /* MockAPIData */,
 				6689096D29AA1D5C00CBF354 /* Utils */,
 				6689096629A7AAFE00CBF354 /* Views */,
 				6689096329A7AA7E00CBF354 /* Extension */,
@@ -125,7 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				66A6847B29BD933100F2BE93 /* CoffeeAPI.swift */,
-				6689096929AA15A100CBF354 /* MockingWebService.swift */,
+				66A6848329BE07A200F2BE93 /* CoffeeAPI+Extension.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -175,6 +178,14 @@
 				6689097629AA228B00CBF354 /* CoffeOrderAppE2ETests.swift */,
 			);
 			path = CoffeOrderAppE2ETests;
+			sourceTree = "<group>";
+		};
+		66A6848529BE1B9000F2BE93 /* MockAPIData */ = {
+			isa = PBXGroup;
+			children = (
+				66A6848229BDD26B00F2BE93 /* all_orders.json */,
+			);
+			path = MockAPIData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66A6848629BE1BC100F2BE93 /* all_orders.json in Resources */,
 				6664933829A7A1C40037C03F /* Preview Assets.xcassets in Resources */,
 				6664933529A7A1C40037C03F /* Assets.xcassets in Resources */,
 			);
@@ -286,7 +298,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				66A6847E29BDC38E00F2BE93 /* MoyaProvider+Extension.swift in Sources */,
-				6689096A29AA15A100CBF354 /* MockingWebService.swift in Sources */,
 				6689096829A7AB2500CBF354 /* OrderCellView.swift in Sources */,
 				6689096229A7A63400CBF354 /* CoffeeModel.swift in Sources */,
 				6689096F29AA1D8200CBF354 /* AppEnvironment.swift in Sources */,
@@ -299,6 +310,7 @@
 				6689098229AA28F900CBF354 /* View+Extension.swift in Sources */,
 				6698C7F329AB453800EACE3A /* OrderDetailView.swift in Sources */,
 				6689096529A7AA9400CBF354 /* NumberFormatter+Extension.swift in Sources */,
+				66A6848429BE07A200F2BE93 /* CoffeeAPI+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

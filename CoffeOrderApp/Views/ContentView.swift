@@ -81,6 +81,9 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().environmentObject(
-            CoffeeModel(provider: MoyaProvider<CoffeeAPI>()))
+            CoffeeModel(provider: MoyaProvider<CoffeeAPI>(
+                stubClosure:
+                MoyaProvider
+                    .immediatelyStub))) // 이 값으로 해야 Mock Data (sample data를 활용함.)
     }
 }
