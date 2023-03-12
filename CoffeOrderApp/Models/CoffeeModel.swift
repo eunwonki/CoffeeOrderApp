@@ -6,14 +6,16 @@
 //
 
 import Foundation
+import Moya
 
 @MainActor
 class CoffeeModel: ObservableObject {
-    let webservice: WebService
+    let provider: MoyaProvider<CoffeeAPI>
+    
     @Published private(set) var orders: [Order] = []
     
-    init(webservice: WebService) {
-        self.webservice = webservice
+    init(provider: MoyaProvider<CoffeeAPI>) {
+        self.provider = provider
     }
     
     func orderBy(id: Int) -> Order? {
@@ -25,22 +27,22 @@ class CoffeeModel: ObservableObject {
     }
     
     func populateOrders() async throws {
-        orders = try await webservice.getOrders()
-        print(orders)
+        orders = try await provider.request(.allOrders)
     }
     
     func placeOrder(_ order: Order) async throws {
-        let newOrder = try await webservice.placeOrder(order: order)
+        let newOrder: Order = try await provider.request(.placeOrder(order))
         orders.append(newOrder)
     }
     
     func deleteOrder(_ orderId: Int) async throws {
-        let deletedOrder = try await webservice.deleteOrder(orderId: orderId)
+        let deletedOrder: Order = try await provider.request(.deleteOrder(orderId))
         orders = orders.filter { $0.id != deletedOrder.id }
     }
     
     func updateOrder(_ order: Order) async throws {
-        let updatedOrder = try await webservice.updateOrder(order)
+        guard order.id != nil else { return }
+        let updatedOrder: Order = try await provider.request(.updateOrder(order))
         guard let index = orders.firstIndex(where: { $0.id == updatedOrder.id }) else {
             throw CoffeeOrderError.invalidOrderId
         }

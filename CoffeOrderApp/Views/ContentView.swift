@@ -5,13 +5,13 @@
 //  Created by wonki on 2023/02/23.
 //
 
+import Foundation
+import Moya
 import SwiftUI
 
 struct ContentView: View {
     @State private var isPresented: Bool = false
-
-    // Repository, Singleton 같은 느낌인듯...
-    @EnvironmentObject private var model: CoffeeModel
+    @EnvironmentObject var model: CoffeeModel
 
     private func populateOrders() async {
         do {
@@ -21,14 +21,15 @@ struct ContentView: View {
         }
     }
 
-    private func deleteOrder(_ indexSet: IndexSet) {
+    func deleteOrder(_ indexSet: IndexSet) {
         indexSet.forEach { index in
             let order = model.orders[index]
             guard let orderId = order.id else {
                 return
             }
 
-            Task {
+            // Moya의 Task와 SwiftUI의 Task가 겹쳐서 문제가 생김.
+            _Concurrency.Task {
                 do {
                     try await model.deleteOrder(orderId)
                 } catch {
@@ -49,7 +50,8 @@ struct ContentView: View {
                             NavigationLink(value: order.id) {
                                 OrderCellView(order: order)
                             }
-                        }.onDelete(perform: deleteOrder)
+                        }
+                        .onDelete(perform: deleteOrder)
                     }.accessibilityIdentifier("orderList")
                 }
             }
@@ -78,6 +80,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environmentObject(CoffeeModel(webservice: MockingWebService()))
+        ContentView().environmentObject(
+            CoffeeModel(provider: MoyaProvider<CoffeeAPI>()))
     }
 }

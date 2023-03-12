@@ -7,28 +7,9 @@
 
 import Foundation
 
-// where exactly you're going to go
-enum EndPoint {
-    case allOrders
-    case placeOrder
-    case deleteOrder(_ orderId: Int)
-    case updateOrder(_ orderId: Int)
-
-    var path: String {
-        switch self {
-        case .allOrders:
-            return "test/orders"
-        case .placeOrder:
-            return "test/new-order"
-        case .deleteOrder(let orderId):
-            return "/test/orders/\(orderId)"
-        case .updateOrder(let orderId):
-            return "/test/orders/\(orderId)"
-        }
-    }
-}
-
 struct Configuration {
+    static var shared = Configuration()
+
     lazy var environment: AppEnvironment = {
         // read value from environment variable
         guard let env = ProcessInfo.processInfo.environment["ENV"] else {

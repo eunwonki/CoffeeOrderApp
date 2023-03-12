@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Moya
 
 struct OrderDetailView: View {
     // TODO: preview에서 update, delete가 동작하지 않음.
@@ -16,12 +17,14 @@ struct OrderDetailView: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    func deleteOrder() async {
-        do {
-            try await model.deleteOrder(orderId)
-            dismiss()
-        } catch {
-            print(error)
+    func deleteOrder() {
+        _Concurrency.Task {
+            do {
+                try await model.deleteOrder(orderId)
+                dismiss()
+            } catch {
+                print(error)
+            }
         }
     }
     
@@ -31,8 +34,7 @@ struct OrderDetailView: View {
                 VStack(alignment: .leading, spacing: 10) {
                     Text(order.coffeeName)
                         .font(.title)
-                        .frame(width: .infinity,
-                               alignment: .leading)
+                        .frame(alignment: .leading)
                         .accessibilityIdentifier("coffeeNameText")
                     Text(order.size.rawValue)
                         .opacity(0.5)
@@ -41,9 +43,7 @@ struct OrderDetailView: View {
                     HStack {
                         Spacer()
                         Button("delete order", role: .destructive) {
-                            Task {
-                                await deleteOrder()
-                            }
+                            deleteOrder()
                         }
                         Button("edit order") {
                             isPresented = true
@@ -65,7 +65,6 @@ struct OrderDetailView_Previews: PreviewProvider {
     static var previews: some View {
         OrderDetailView(orderId: 0)
             .environmentObject(
-                CoffeeModel(webservice: MockingWebService()))
-        // 왜 안뜨지??
+                CoffeeModel(provider: MoyaProvider<CoffeeAPI>()))
     }
 }

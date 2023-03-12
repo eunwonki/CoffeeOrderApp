@@ -6,15 +6,15 @@
 //
 
 import SwiftUI
+import Moya
 
 @main
 struct CoffeOrderApp: App {
     @StateObject private var model: CoffeeModel
 
     init() {
-        var config = Configuration()
-        let webservice = WebService(baseURL: config.environment.baseURL)
-        _model = StateObject(wrappedValue: CoffeeModel(webservice: webservice))
+        let provider = MoyaProvider<CoffeeAPI>()
+        _model = StateObject(wrappedValue: CoffeeModel(provider: provider))
     }
 
     var body: some Scene {
